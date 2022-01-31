@@ -1,2 +1,2 @@
 # Team-H
-## Alvin Frierson & Jeffrey Lor
+### Alvin Frierson & Jeffrey Lor & Mahmood Sardari
