@@ -1,1 +1,2 @@
-# Team-H-AlvinJeffrey
+# Team-H
+## Alvin Frierson & Jeffrey Lor
