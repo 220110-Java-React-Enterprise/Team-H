@@ -5,20 +5,24 @@ import javax.servlet.ServletContextListener;
 
 import utils.GlobalStore;
 
-public class DependencyLoaderListener implements ServletContextListener {
-    
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
+public class DependencyLoaderListener implements ServletContextListener
+{
 
-    }
+	@Override
+	public void contextInitialized(ServletContextEvent sce)
+	{
 
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
+	}
 
-    }
-    
+	@Override
+	public void contextDestroyed(ServletContextEvent sce)
+	{
+
+	}
+
 }
 
-class DependencyLoader {
+class DependencyLoader
+{
 
 }
