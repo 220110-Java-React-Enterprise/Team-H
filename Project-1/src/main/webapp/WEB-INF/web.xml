@@ -11,19 +11,11 @@
         </listener>
 
         <servlet>
-                <servlet-name>pingServlet</servlet-name>
-                <servlet-class>servlets.PingServlet</servlet-class>
+                <servlet-name>foodServlet</servlet-name>
+                <servlet-class>servlets.FoodServlet</servlet-class>
         </servlet>
         <servlet-mapping>
-                <servlet-name>pingServlet</servlet-name>
-                <url-pattern>/ping</url-pattern>
-        </servlet-mapping>
-        <servlet>
-                <servlet-name>dataServlet</servlet-name>
-                <servlet-class>servlets.DataServlet</servlet-class>
-        </servlet>
-        <servlet-mapping>
-                <servlet-name>dataServlet</servlet-name>
-                <url-pattern>/data</url-pattern>
+                <servlet-name>foodServlet</servlet-name>
+                <url-pattern>/food</url-pattern>
         </servlet-mapping>
 </web-app>

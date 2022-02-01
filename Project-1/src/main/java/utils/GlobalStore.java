@@ -1,37 +1,35 @@
 package utils;
 
+import models.Food;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GlobalStore {
-    private List<Object> objList;
+    private static List<Food> foodList = new ArrayList<>();
 
-    public GlobalStore() {
-        this.objList = new ArrayList<>();
+    public static List<Food> getFoodList() {
+        return foodList;
     }
 
-    public List<Object> getObjList() {
-        return this.objList;
+    public static void setFoodList(List<Food> list) {
+        foodList = list;
     }
 
-    public void setObjList(List<Object> objList) {
-        this.objList = objList;
+    public static Food getFromFoodList(int index) {
+        return foodList.get(index);
     }
 
-    public Object getFromObjList(int index) {
-        return objList.get(index);
+    public static void addToFoodList(Food food) {
+        foodList.add(food);
     }
 
-    public void addToObjList(Object obj) {
-        objList.add(obj);
+    public static void removeFromFoodList(int index) {
+        foodList.remove(index);
     }
 
-    public void removeFromObjList(int index) {
-        objList.remove(index);
-    }
-
-    public void removeFromObjList(Object obj) {
-        objList.remove(obj);
+    public static void removeFromFoodList(Food food) {
+        foodList.remove(food);
     }
 
 }

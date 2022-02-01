@@ -1,6 +1,7 @@
 package models;
 
 public class Food {
+    private int id;
     private String name;
     private double price;
     private String description;
@@ -14,6 +15,16 @@ public class Food {
         this.price = price;
         this.description = description;
         this.url = url;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
     }
 
     public String getName() {
