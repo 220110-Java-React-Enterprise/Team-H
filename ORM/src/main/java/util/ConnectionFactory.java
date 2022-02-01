@@ -25,7 +25,7 @@ public class ConnectionFactory {
         }
         return connection;
     }
-    
+
     public static void closeConnection() throws SQLException {
         connection.close();
         connectionFactory = null;
