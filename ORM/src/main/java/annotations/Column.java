@@ -16,10 +16,4 @@ import java.lang.annotation.Target;
 public @interface Column
 {
 	SQLType type();
-
-	boolean primaryKey() default false;
-
-	boolean nonNull() default false;
-
-	int length() default -1;
 }

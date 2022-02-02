@@ -24,7 +24,18 @@ public class Driver {
             p.load(fr);
             connection = ConnectionFactory.getConnection(p.getProperty("hostname"), Integer.parseInt(p.getProperty("port")), p.getProperty("dbname"), p.getProperty("username"), p.getProperty("password"));
             Repository repo = new Repository(connection);
+
+            food.setName("Chicken");
+            food.setPrice(3.99);
+            food.setDescription("It is Chicken.");
+            //repo.create(food);
+
             List<Object> list = repo.read(food);
+
+            ((Food)list.get(1)).setDescription("It might be Chicken.");
+            //repo.update((Food)list.get(1));
+            //repo.delete((Food)list.get(1));
+
             for(Object item : list) {
                 Food f = (Food)item;
                 System.out.println(f.getName() + " " + f.getDescription() + " " + f.getPrice());

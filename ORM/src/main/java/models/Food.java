@@ -7,19 +7,19 @@ import enums.SQLType;
 @Table(tableName = "food")
 public class Food
 {
-	@Column(type = SQLType.INT, primaryKey = true, nonNull = true, length = -1)
+	@Column(type = SQLType.INT)
 	private int food_id;
 
-	@Column(type = SQLType.VARCHAR, primaryKey = false, nonNull = true, length = 255)
+	@Column(type = SQLType.VARCHAR)
 	private String name;
 
-	@Column(type = SQLType.NUMERIC, primaryKey = false, nonNull = false, length = -1)
+	@Column(type = SQLType.NUMERIC)
 	private double price;
 
-	@Column(type = SQLType.VARCHAR, primaryKey = false, nonNull = false, length = 255)
+	@Column(type = SQLType.VARCHAR)
 	private String description;
 
-	@Column(type = SQLType.VARCHAR, primaryKey = false, nonNull = false, length = 255)
+	@Column(type = SQLType.VARCHAR)
 	private String url;
 
 	public Food()
