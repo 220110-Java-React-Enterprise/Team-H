@@ -1,5 +1,9 @@
 package scriptors;
 
+/**
+ * Object Relational Mapping class used to convert data between incompatible type systems using an OOP based language.
+ */
+
 public class Scriptor
 {
 
@@ -15,3 +19,7 @@ public class Scriptor
 	String sqlScript = firstPart + tableName + nextPart + filterColumn + parameterList;
 
 }
+
+/**
+ * Mention to team how you now have a better understanding of the scriptor for your ORM!
+ */

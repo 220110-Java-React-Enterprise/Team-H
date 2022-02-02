@@ -1,5 +1,8 @@
 package enums;
 
+/**
+ * Enumeration for mentioning the specified data types one at a time(one-by-one).
+ */
 public enum SQLType
 {
 	UUID,       //UUID
