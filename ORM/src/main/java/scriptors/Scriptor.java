@@ -4,6 +4,10 @@ package scriptors;
  * Object Relational Mapping class used to convert data between incompatible type systems using an OOP based language.
  */
 
+import annotations.Table;
+
+import java.lang.reflect.Field;
+
 /**
  * Mention to team how you now have a better understanding of the scriptor for your ORM!
  */
@@ -12,58 +16,77 @@ public class Scriptor
 {
 
 	// Not sure what to make the parameter, it's just Object for now
-	public static String createSQL(Object o)
+	public static String createSQL(Object obj)
 	{
-		//INSERT INTO table (_) VALUES (?)
+		// INSERT INTO table (_, _, _) VALUES (?, ?, ?)
 
 		String part1 = "INSERT INTO ";
-		String tableName = ""; // reflection or annotation
+		String tableName = obj.getClass().getAnnotation(Table.class).tableName();
 		String part2 = " (";
-		String columnList = ""; // iterate over fields and use reflection or annotations
+		String columnList = ""; // built below
 		String part3 = ") VALUES (";
-		String values = "?, ?"; // num of ? should be equal to number of fields
+		String values = ""; // built below
 		String part4 = ")";
+
+		Field[] fields = obj.getClass().getDeclaredFields();
+		for(int i = 1; i < fields.length; i++) {
+			columnList += fields[i].getName();
+			values += "?";
+
+			// If last, then don't put comma spacing
+			if(i != fields.length - 1) {
+				columnList += ", ";
+				values += ", ";
+			}
+		}
+
 		return part1 + tableName + part2 + columnList + part3 + values + part4;
 	}
 
-	public static String readSQL(Object o)
+	public static String readSQL(Object obj)
 	{
-		// SELECT * FROM table WHERE _ = ?
+		// SELECT * FROM table
 
-		String part1 = "SELECT * FROM ";
-		String tableName = "";
-		String part2 = " WHERE ";
-		String columnList = "";
-		String parameterList = " = ?";
+		String select = "SELECT * FROM ";
+		String tableName = obj.getClass().getAnnotation(Table.class).tableName();
 
-		return part1 + tableName + part2 + columnList + parameterList;
+		return select + tableName;
 	}
 
-	public static String updateSQL(Object o)
+	public static String updateSQL(Object obj)
 	{
 		// UPDATE table SET _ = ? WHERE _ = ?
 
 		String part1 = "UPDATE ";
-		String tableName = "";
+		String tableName = obj.getClass().getAnnotation(Table.class).tableName();
 		String part2 = " SET ";
-		String updateValues = "column = value"; // iterate over and separate by commas
+		String setValues = "";
 		String part3 = " WHERE ";
-		String condition = "primaryKey = value";
+		String id = tableName + "_id = ?";
 
-		return part1 + tableName + part2 + updateValues + part3 + condition;
+		Field[] fields = obj.getClass().getDeclaredFields();
+		for(int i = 1; i < fields.length; i++) {
+			setValues += fields[i].getName() + " = ?";
+
+			// If last, then don't put comma spacing
+			if(i != fields.length - 1) {
+				setValues += ", ";
+			}
+		}
+
+		return part1 + tableName + part2 + setValues + part3 + id;
 	}
 
-	public static String deleteSQL(Object o)
+	public static String deleteSQL(Object obj)
 	{
-		// DELETE FROM table WHERE _ = ?
+		// DELETE FROM table WHERE _id = ?
 
 		String part1 = "DELETE FROM ";
-		String tableName = "";
+		String tableName = obj.getClass().getAnnotation(Table.class).tableName();
 		String part2 = " WHERE ";
-		String columnList = "";
-		String parameterList = " = ?";
+		String id = tableName + "_id = ?";
 
-		return part1 + tableName + part2 + columnList + parameterList;
+		return part1 + tableName + part2 + id;
 	}
 
 }
