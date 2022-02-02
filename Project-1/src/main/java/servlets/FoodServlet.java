@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Food;
 import utils.GlobalStore;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +14,7 @@ public class FoodServlet extends HttpServlet
 {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
 		List<Food> foodList = GlobalStore.getFoodList();
 		ObjectMapper mapper = new ObjectMapper();
@@ -25,7 +24,7 @@ public class FoodServlet extends HttpServlet
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
 		ObjectMapper mapper = new ObjectMapper();
 		Food foodObject = mapper.readValue(req.getInputStream(), Food.class);
@@ -34,7 +33,7 @@ public class FoodServlet extends HttpServlet
 	}
 
 	@Override
-	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
 		ObjectMapper mapper = new ObjectMapper();
 		Food payload = mapper.readValue(req.getInputStream(), Food.class);
@@ -51,7 +50,7 @@ public class FoodServlet extends HttpServlet
 	}
 
 	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
 		ObjectMapper mapper = new ObjectMapper();
 		Food payload = mapper.readValue(req.getInputStream(), Food.class);

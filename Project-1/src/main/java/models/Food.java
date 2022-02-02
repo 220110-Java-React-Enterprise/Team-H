@@ -1,11 +1,25 @@
 package models;
 
+import annotations.Column;
+import annotations.Table;
+import enums.SQLType;
+
+@Table(tableName = "food")
 public class Food
 {
-	private int id;
+	@Column(type = SQLType.INT)
+	private int food_id;
+
+	@Column(type = SQLType.VARCHAR)
 	private String name;
+
+	@Column(type = SQLType.NUMERIC)
 	private double price;
+
+	@Column(type = SQLType.VARCHAR)
 	private String description;
+
+	@Column(type = SQLType.VARCHAR)
 	private String url;
 
 	public Food()
@@ -20,14 +34,14 @@ public class Food
 		this.url = url;
 	}
 
-	public int getId()
+	public int getFoodId()
 	{
-		return id;
+		return food_id;
 	}
 
-	public void setId(int id)
+	public void setFoodId(int id)
 	{
-		this.id = id;
+		this.food_id = id;
 	}
 
 	public String getName()
