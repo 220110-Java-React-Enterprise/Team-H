@@ -40,7 +40,7 @@ public class FoodServlet extends HttpServlet
 		List<Food> list = GlobalStore.getFoodList();
 		for(int i = 0; i < list.size(); i++)
 		{
-			if(list.get(i).getId() == payload.getId())
+			if(list.get(i).getFoodId() == payload.getFoodId())
 			{
 				list.set(i, payload);
 				break;
@@ -57,7 +57,7 @@ public class FoodServlet extends HttpServlet
 		List<Food> list = GlobalStore.getFoodList();
 		for(int i = 0; i < list.size(); i++)
 		{
-			if(list.get(i).getId() == payload.getId())
+			if(list.get(i).getFoodId() == payload.getFoodId())
 			{
 				list.remove(i);
 				break;
