@@ -1,6 +1,8 @@
 package servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dao.FoodRepo;
+import dao.IFoodRepo;
 import models.Food;
 import utils.GlobalStore;
 
@@ -12,11 +14,12 @@ import java.util.List;
 
 public class FoodServlet extends HttpServlet
 {
+	private IFoodRepo repo = new FoodRepo();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
-		List<Food> foodList = GlobalStore.getFoodList();
+		List<Food> foodList = repo.readFood(new Food());
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonString = mapper.writeValueAsString(foodList);
 		resp.getWriter().print(jsonString);
@@ -27,8 +30,8 @@ public class FoodServlet extends HttpServlet
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
 		ObjectMapper mapper = new ObjectMapper();
-		Food foodObject = mapper.readValue(req.getInputStream(), Food.class);
-		GlobalStore.addToFoodList(foodObject);
+		Food payload = mapper.readValue(req.getInputStream(), Food.class);
+		repo.createFood(payload);
 		resp.setStatus(203);
 	}
 
@@ -37,15 +40,7 @@ public class FoodServlet extends HttpServlet
 	{
 		ObjectMapper mapper = new ObjectMapper();
 		Food payload = mapper.readValue(req.getInputStream(), Food.class);
-		List<Food> list = GlobalStore.getFoodList();
-		for(int i = 0; i < list.size(); i++)
-		{
-			if(list.get(i).getFoodId() == payload.getFoodId())
-			{
-				list.set(i, payload);
-				break;
-			}
-		}
+		repo.updateFood(payload);
 		resp.setStatus(203);
 	}
 
@@ -54,15 +49,7 @@ public class FoodServlet extends HttpServlet
 	{
 		ObjectMapper mapper = new ObjectMapper();
 		Food payload = mapper.readValue(req.getInputStream(), Food.class);
-		List<Food> list = GlobalStore.getFoodList();
-		for(int i = 0; i < list.size(); i++)
-		{
-			if(list.get(i).getFoodId() == payload.getFoodId())
-			{
-				list.remove(i);
-				break;
-			}
-		}
+		repo.deleteFood(payload);
 		resp.setStatus(203);
 	}
 }
