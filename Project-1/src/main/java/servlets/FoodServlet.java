@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.FoodRepo;
 import dao.IFoodRepo;
 import models.Food;
-import utils.GlobalStore;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +13,12 @@ import java.util.List;
 
 public class FoodServlet extends HttpServlet
 {
-	private IFoodRepo repo = new FoodRepo();
+	private IFoodRepo foodRepo = new FoodRepo();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
-		List<Food> foodList = repo.readFood(new Food());
+		List<Food> foodList = foodRepo.readFood(new Food());
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonString = mapper.writeValueAsString(foodList);
 		resp.getWriter().print(jsonString);
@@ -31,7 +30,7 @@ public class FoodServlet extends HttpServlet
 	{
 		ObjectMapper mapper = new ObjectMapper();
 		Food payload = mapper.readValue(req.getInputStream(), Food.class);
-		repo.createFood(payload);
+		foodRepo.createFood(payload);
 		resp.setStatus(203);
 	}
 
@@ -40,7 +39,7 @@ public class FoodServlet extends HttpServlet
 	{
 		ObjectMapper mapper = new ObjectMapper();
 		Food payload = mapper.readValue(req.getInputStream(), Food.class);
-		repo.updateFood(payload);
+		foodRepo.updateFood(payload);
 		resp.setStatus(203);
 	}
 
@@ -49,7 +48,7 @@ public class FoodServlet extends HttpServlet
 	{
 		ObjectMapper mapper = new ObjectMapper();
 		Food payload = mapper.readValue(req.getInputStream(), Food.class);
-		repo.deleteFood(payload);
+		foodRepo.deleteFood(payload);
 		resp.setStatus(203);
 	}
 }
