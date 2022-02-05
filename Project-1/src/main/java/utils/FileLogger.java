@@ -13,7 +13,8 @@ public class FileLogger
 
 	private FileLogger()
 	{
-		filePath = "logs/";
+		// TODO: Figure this filepath out
+		filePath = "C:\\Users\\Jeffrey Lor\\Desktop\\Team-H\\Project-1\\logs\\project1.log";
 		consoleOutput = false;
 		stackTraceSize = 10;
 	}

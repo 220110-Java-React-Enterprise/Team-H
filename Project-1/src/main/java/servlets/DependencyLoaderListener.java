@@ -1,9 +1,9 @@
 package servlets;
 
+import utils.FileLogger;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
-import utils.GlobalStore;
 
 public class DependencyLoaderListener implements ServletContextListener
 {

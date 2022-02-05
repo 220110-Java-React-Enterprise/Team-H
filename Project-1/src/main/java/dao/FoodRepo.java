@@ -1,7 +1,7 @@
 package dao;
 
-
 import models.Food;
+import utils.FileLogger;
 import web.ConnectionManager;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,10 +15,10 @@ public class FoodRepo implements IFoodRepo
 
 	public FoodRepo()
 	{
+		// TODO: DriverManager fails to connect here "No suitable Driver found"
 		repo = new Repository(ConnectionManager.getConnection());
 	}
 
-	@Override
 	public void createFood(Food food)
 	{
 		try
@@ -27,32 +27,29 @@ public class FoodRepo implements IFoodRepo
 		}
 		catch(SQLException | IllegalAccessException e)
 		{
-			// Add Logging
+			FileLogger.getFileLogger().log(e);
 		}
 
 	}
 
-	@Override
 	public List<Food> readFood(Food food)
 	{
 		List<Food> foodList = new ArrayList<>();
 		try
 		{
 			List<Object> list = repo.read(food);
-
 			for(Object o : list)
 			{
-				foodList.add((Food)o);
+				foodList.add((Food) o);
 			}
 		}
 		catch(SQLException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException e)
 		{
-			// Add Logging
+			FileLogger.getFileLogger().log(e);
 		}
 		return foodList;
 	}
 
-	@Override
 	public void updateFood(Food food)
 	{
 		try
@@ -61,11 +58,10 @@ public class FoodRepo implements IFoodRepo
 		}
 		catch(SQLException | IllegalAccessException e)
 		{
-			// Add Logging
+			FileLogger.getFileLogger().log(e);
 		}
 	}
 
-	@Override
 	public void deleteFood(Food food)
 	{
 		try
@@ -74,7 +70,7 @@ public class FoodRepo implements IFoodRepo
 		}
 		catch(SQLException | IllegalAccessException e)
 		{
-			// Add Logging
+			FileLogger.getFileLogger().log(e);
 		}
 	}
 
