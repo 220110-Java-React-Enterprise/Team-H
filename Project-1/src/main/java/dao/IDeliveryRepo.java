@@ -4,6 +4,7 @@ import models.Delivery;
 
 import java.util.List;
 
+// This is an interface for our delivery CRUD.
 public interface IDeliveryRepo {
 
 	// Method for create

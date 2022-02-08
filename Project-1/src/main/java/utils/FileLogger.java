@@ -4,7 +4,11 @@ import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class FileLogger
+/**
+ * FileLogger is a utility class used to log messages/text.
+ */
+
+public class  FileLogger
 {
 	private static FileLogger fileLogger;
 	private static String filePath;

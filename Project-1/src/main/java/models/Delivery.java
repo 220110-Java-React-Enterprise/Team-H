@@ -4,6 +4,7 @@ import annotations.Column;
 import annotations.Table;
 import enums.SQLType;
 
+// Delivery POJO
 @Table(tableName = "deliveries")
 public class Delivery
 {

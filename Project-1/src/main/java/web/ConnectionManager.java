@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * The connection manager reads the properties file and passes that info on to the ORM connection factory.
+ */
 public class ConnectionManager {
 
 	private static Connection connection;

@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Delivery is the intermediary between our ORM and Delivery Servlet.
+ */
+
 public class DeliveryRepo implements IDeliveryRepo
 {
 
@@ -19,6 +23,10 @@ public class DeliveryRepo implements IDeliveryRepo
 		repo = new Repository(ConnectionManager.getConnection());
 	}
 
+	/**
+	 * create delivery calls the create method in our ORM and creates a Delivery object
+	 * @param delivery  passes an instance of our Food class.
+	 */
 	@Override
 	public void createDelivery(Delivery delivery)
 	{
@@ -32,6 +40,11 @@ public class DeliveryRepo implements IDeliveryRepo
 		}
 	}
 
+	/**
+	 * read deliver calls the read method in our ORM.
+	 * @param delivery  passes an instance of our Delivery class.
+	 * @return returns a list of all delivery items.
+	 */
 	@Override
 	public List<Delivery> readDelivery(Delivery delivery)
 	{
@@ -51,6 +64,10 @@ public class DeliveryRepo implements IDeliveryRepo
 		return deliveryList;
 	}
 
+	/**
+	 * update delivery calls the update method in our ORM and updates that passed delivery object
+	 * @param delivery  the delivery object is passed to the method.
+	 */
 	@Override
 	public void updateDelivery(Delivery delivery)
 	{
@@ -64,6 +81,10 @@ public class DeliveryRepo implements IDeliveryRepo
 		}
 	}
 
+	/**
+	 * Delete Delivery deletes the delivery object from our list of deliveries.
+	 * @param delivery   the delivery object to be deleted is passed to the delete method.
+	 */
 	@Override
 	public void deleteDelivery(Delivery delivery)
 	{

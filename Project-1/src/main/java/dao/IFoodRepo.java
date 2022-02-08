@@ -4,6 +4,7 @@ import models.Food;
 
 import java.util.List;
 
+// This is an interface for our Food CRUD
 public interface IFoodRepo {
 
     // Method for create
