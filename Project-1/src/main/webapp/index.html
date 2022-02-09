@@ -15,25 +15,19 @@
                         food = JSON.parse(this.responseText);
                         console.log(food);
 
-                        let table = document.querySelector("#foodTable");
+                        let div = document.querySelector("#menu");
 
                         for(let i = 0; i < food.length; i++)
                         {
+                                let newDiv = document.createElement('div');
+                                newDiv.className = "food_item";
 
-                                let row = table.insertRow(table.rows.length);
-                                let nameCell = row.insertCell(0);
+                                newDiv.innerHTML += "<img src=\"" + food[i].url + "\"></img>";
+                                newDiv.innerHTML += "<div class=\"names\">" + food[i].name + "</div>";
+                                newDiv.innerHTML += "<div class=\"prices\">$" + food[i].price + "</div>";
+                                newDiv.innerHTML += "<div class=\"descriptions\">" + food[i].description + "</div>";
 
-                                nameCell.innerHTML = "<div class=\"names\">" + food[i].name   + "</div>" ;
-
-                                let priceCell = row.insertCell(1);
-                                priceCell.innerHTML = "<div class=\"prices\">$" + food[i].price  + "</div>" ;
-
-                                let descCell = row.insertCell(2);
-                                descCell.innerHTML = "<div class=\"descriptions\">" + food[i].description   + "</div>" ;
-
-                                let picCell = row.insertCell(3);
-                                picCell.innerHTML = "<img src=\"" + food[i].url + "\"></img>";
-
+                                div.appendChild(newDiv);
                         }
                     }
                 };
@@ -44,15 +38,6 @@
     </head>
 
     <body onload="viewFood()">
-        <table id="foodTable">
-            <thead>
-            <tr>
-
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+        <div id="menu"></div>
     </body>
 </html>

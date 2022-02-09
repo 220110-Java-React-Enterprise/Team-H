@@ -36,7 +36,6 @@ public class FoodServlet extends HttpServlet
 	 * @param req    the get request body is passed to the method from the client
 	 * @param resp	 the response body is passed to the method from the server
 	 */
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 	{
