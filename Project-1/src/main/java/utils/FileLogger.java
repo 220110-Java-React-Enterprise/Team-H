@@ -7,7 +7,6 @@ import java.time.format.DateTimeFormatter;
 /**
  * FileLogger is a utility class used to log messages/text.
  */
-
 public class  FileLogger
 {
 	private static FileLogger fileLogger;

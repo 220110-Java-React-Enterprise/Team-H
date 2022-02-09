@@ -18,7 +18,6 @@ public class FoodRepo implements IFoodRepo
 
 	public FoodRepo()
 	{
-		// TODO: DriverManager fails to connect here "No suitable Driver found"
 		repo = new Repository(ConnectionManager.getConnection());
 	}
 

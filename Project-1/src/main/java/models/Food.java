@@ -4,8 +4,6 @@ import annotations.Column;
 import annotations.Table;
 import enums.SQLType;
 
-import java.io.InputStream;
-
 // Food POJO
 @Table(tableName = "food")
 public class Food

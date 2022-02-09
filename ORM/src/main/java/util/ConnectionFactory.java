@@ -22,7 +22,7 @@ public class ConnectionFactory
 	 * @param password     password
 	 * @throws SQLException
 	 */
-	private ConnectionFactory(String host, int port, String dbname, String username, String password) throws SQLException
+	private ConnectionFactory(String host, int port, String dbname, String username, String password) throws SQLException, ClassNotFoundException
 	{
 
 		String connectionStr = "jdbc:mariadb://" +
@@ -30,6 +30,7 @@ public class ConnectionFactory
 				dbname + "?user=" + username +
 				"&password=" + password;
 
+		Class.forName("org.mariadb.jdbc.Driver");
 		connection = DriverManager.getConnection(connectionStr);
 	}
 
@@ -44,7 +45,7 @@ public class ConnectionFactory
 	 * @return 			  return a connection
 	 * @throws SQLException
 	 */
-	public static Connection getConnection(String host, int port, String dbname, String username, String password) throws SQLException
+	public static Connection getConnection(String host, int port, String dbname, String username, String password) throws SQLException, ClassNotFoundException
 	{
 		if(connectionFactory == null)
 		{

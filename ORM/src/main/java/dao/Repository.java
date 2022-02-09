@@ -10,6 +10,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Executes SQL scripts written by the Scriptor class on a given connection
+ */
 public class Repository
 {
 	private Connection connection;

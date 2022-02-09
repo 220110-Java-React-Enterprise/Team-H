@@ -9,10 +9,6 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
-    <listener>
-        <listener-class>servlets.DependencyLoaderListener</listener-class>
-    </listener>
-
     <servlet>
         <servlet-name>foodServlet</servlet-name>
         <servlet-class>servlets.FoodServlet</servlet-class>
@@ -20,6 +16,15 @@
     <servlet-mapping>
         <servlet-name>foodServlet</servlet-name>
         <url-pattern>/food</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deliveryServlet</servlet-name>
+        <servlet-class>servlets.DeliveryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deliveryServlet</servlet-name>
+        <url-pattern>/deliveries</url-pattern>
     </servlet-mapping>
 
 </web-app>

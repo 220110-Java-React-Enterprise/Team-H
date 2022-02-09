@@ -1,21 +1,15 @@
 package scriptors;
 
-/**
- * Object Relational Mapping class used to convert data between incompatible type systems using an OOP based language.
- */
-
 import annotations.Table;
 
 import java.lang.reflect.Field;
 
 /**
- * Mention to team how you now have a better understanding of the scriptor for your ORM!
+ * Object Relational Mapping class used to convert data between incompatible type systems using an OOP based language.
  */
-
 public class Scriptor
 {
 
-	// Not sure what to make the parameter, it's just Object for now
 	public static String createSQL(Object obj)
 	{
 		// INSERT INTO table (_, _, _) VALUES (?, ?, ?)
@@ -23,9 +17,9 @@ public class Scriptor
 		String part1 = "INSERT INTO ";
 		String tableName = obj.getClass().getAnnotation(Table.class).tableName();
 		String part2 = " (";
-		String columnList = ""; // built below
+		String columnList = "";
 		String part3 = ") VALUES (";
-		String values = ""; // built below
+		String values = "";
 		String part4 = ")";
 
 		Field[] fields = obj.getClass().getDeclaredFields();

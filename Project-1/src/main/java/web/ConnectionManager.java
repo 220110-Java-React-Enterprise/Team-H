@@ -37,7 +37,7 @@ public class ConnectionManager {
 			connection = ConnectionFactory.getConnection(p.getProperty("hostname"), Integer.parseInt(p.getProperty("port")),
 					p.getProperty("dbname"), p.getProperty("username"), p.getProperty("password"));
 
-		} catch (IOException | SQLException e) {
+		} catch (IOException | SQLException | ClassNotFoundException e) {
 			FileLogger.getFileLogger().log(e);
 		}
 
