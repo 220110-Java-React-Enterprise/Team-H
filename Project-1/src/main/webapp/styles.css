@@ -1,4 +1,23 @@
+
+
+.names {
+font-size: 26px;
+color: green;
+border-style: double;
+}
+
+.descriptions {
+font-size: 26px;
+color: green;
+}
+
+.prices {
+font-size: 26px;
+color: green;
+}
+
 img {
-    width: 120px;
-    height: 120px;
+    display: block;
+    width: 75px;
+    height: 75px;
 }

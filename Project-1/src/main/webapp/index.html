@@ -19,18 +19,21 @@
 
                         for(let i = 0; i < food.length; i++)
                         {
-                            let row = table.insertRow(table.rows.length);
-                            let nameCell = row.insertCell(0);
-                            nameCell.innerHTML = food[i].name;
 
-                            let priceCell = row.insertCell(1);
-                            priceCell.innerHTML = "$" + food[i].price;
+                                let row = table.insertRow(table.rows.length);
+                                let nameCell = row.insertCell(0);
 
-                            let descCell = row.insertCell(2);
-                            descCell.innerHTML = food[i].description;
+                                nameCell.innerHTML = "<div class=\"names\">" + food[i].name   + "</div>" ;
 
-                            let picCell = row.insertCell(3);
-                            picCell.innerHTML = "<img src=\"" + food[i].url + "\"></img>";
+                                let priceCell = row.insertCell(1);
+                                priceCell.innerHTML = "<div class=\"prices\">$" + food[i].price  + "</div>" ;
+
+                                let descCell = row.insertCell(2);
+                                descCell.innerHTML = "<div class=\"descriptions\">" + food[i].description   + "</div>" ;
+
+                                let picCell = row.insertCell(3);
+                                picCell.innerHTML = "<img src=\"" + food[i].url + "\"></img>";
+
                         }
                     }
                 };
@@ -44,10 +47,7 @@
         <table id="foodTable">
             <thead>
             <tr>
-                <td>Name</td>
-                <td>Price</td>
-                <td>Description</td>
-                <td>Picture</td>
+
             </tr>
             </thead>
             <tbody>
