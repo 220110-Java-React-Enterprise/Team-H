@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>RESTaurant</title>
+        <link rel="stylesheet" href="styles.css">
+        <script>
+            function viewFood()
+            {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function()
+                {
+                    if (xhttp.readyState == 4 && xhttp.status > 199 && xhttp.status < 300)
+                    {
+                        food = JSON.parse(this.responseText);
+                        console.log(food);
+
+                        let table = document.querySelector("#foodTable");
+
+                        for(let i = 0; i < food.length; i++)
+                        {
+                            let row = table.insertRow(table.rows.length);
+                            let nameCell = row.insertCell(0);
+                            nameCell.innerHTML = food[i].name;
+
+                            let priceCell = row.insertCell(1);
+                            priceCell.innerHTML = "$" + food[i].price;
+
+                            let descCell = row.insertCell(2);
+                            descCell.innerHTML = food[i].description;
+
+                            let picCell = row.insertCell(3);
+                            picCell.innerHTML = "<img src=\"" + food[i].url + "\"></img>";
+                        }
+                    }
+                };
+                xhttp.open("GET", "http://localhost:8080/Project-1/food", true);
+                xhttp.send();
+            }
+        </script>
+    </head>
+
+    <body onload="viewFood()">
+        <table id="foodTable">
+            <thead>
+            <tr>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Description</td>
+                <td>Picture</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </body>
+</html>
